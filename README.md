@@ -64,6 +64,7 @@ the local rotation of the Joint | NA |
 |RobotTipColliding|class| robotTipDetection | class reference to robotTipDetection|
 |SafetyButtonEnabbled|bool| false | if true disables all the functionalities of the robot |
 #### Unity Events
+|__Variables__|__Type__|__Default Value__|__Description__|
 |:---|---|---|---:|
 |IKToggleRobot|UnityEvent| NA | Event for IK Toggle|
 |AddJointsScSpeed|UnityEvent| NA | Event For Increasing Speed|
