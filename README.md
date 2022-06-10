@@ -9,16 +9,7 @@ While there are some extra functionalities added to this version, some of the ro
 
 ## Sections
   [Robot Joint](#robot-joint) <br />
-  [Second Joint](#second-joint) <br />
-  [Third Joint](#third-joint) <br />
-  [Fourth Joint](#fourth-joint) <br />
-  [Fifth Joint](#fifth-joint) <br />
-  [Sixth Joint](#sixth-joint) <br />
-  [Interactable Object](#interactable-object) <br />
-  [Scripts Controller](#scripts-controller) <br />
-   <br />
-   [GrabTool (Top)](#Grab-Tool-Top) <br />
-   [GrabTool (Bottom)](#Grab-Tool-Top) <br />
+  [IK Manager](#ik-manager) <br />
 
 ## Classes and Methods
 
@@ -28,9 +19,20 @@ While there are some extra functionalities added to this version, some of the ro
 |:---|---|---|---:|
 |Axis|Vector3|NA| axis of rotation for the joint |
 |StartOffset|Vector3|NA| degrees of rotation of the joint|
-|MinAngle|float|0| current rotation degree|
-|MaxAngle|float|0.1f| degree movement value |
-|speed|float|1.0f | speed of rotation|
+|MinAngle|float|NA| min angle rotation|
+|MaxAngle|float|NA| max angle rotation |
+|current|float| 0 | current angle of rotation|
+|motion|float| 1.2f | velocity of the motion of the robot|
+|speed|float| 0.35f | speed of the robot|
+|testjointP|bool| false | moves the robot in the positive degree (use only for testing purposes)|
+|testjointN|bool| false | moves the robot in the negative degree (use only for testing purposes)|
+|stopRobotTemporarily|bool| false |limits the movement of the robot when colliding|
+|robotTip|GameObject| robotTip | game object that references the last joint of the robot|
+|RobotTipColliding|class| robotTipDetection | class reference to robotTipDetection|
+|PositiveJointBool|bool| false | moves the robot in the positive degree (only accessible through buttons)|
+|NegativeJointBool|bool| false | moves the robot in the negative degree (only accessible through buttons)|
+
+
 
 |__Class__|__Method__|__Description__|__Key__|
 |:---|---|---|---:|
@@ -41,106 +43,31 @@ While there are some extra functionalities added to this version, some of the ro
 |FirstJoint|getCurrentJoint1()|returns the local rotation of the Joint | NA |
 |FirstJoint|setCurrent(float)|sets the current value for the joint rotation (it is useful to reset the value when changing from IK to FK)| I |
 
-### Second Joint
+the local rotation of the Joint | NA |
+
+### IK Manager
 |__Variables__|__Type__|__Default Value__|__Description__|
 |:---|---|---|---:|
-|max|float|76| maximum rotation degree |
-|min|float|-60| minimum rotation degree|
-|current|float|0| current rotation degree|
-|motion|float|0.1f| degree movement value |
-|speed|float|1.0f | speed of rotation|
-
-|__Class__|__Method__|__Description__|__Key__|
+|TargetTransform|Transform| NA | reference to the transform values of the IK target |
+|Joints|RobotJoint[]|NA| list of joints (gameobjects using the robot joint sript) |
+|Angles|float[]| NA | list of angles of all the joints of the robot|
+|SamplingDistance|float| 5f | distance sample for the grdient  |
+|LearningRate|float| 100f | rate of tries that the system will use to get to the location |
+|DistanceThreshold|float|  0.0001f | Distance at which the IK system will stop |
+|IKToggle|bool| NA | switches between IK and FK systems |
+|JointsSpeed|float| 0.35f | speed of the joints |
+|SetIKSwitchVar|bool| false | sllows the Robot to switch to IK  |
+|SetSpeedUPVar|bool| false | increases the speed of all the joints in FK |
+|SetSpeedDOWNVar|bool|  false | decreases the speed of all the joints in FK |
+|stopRobotTemporarily|bool| false |limits the movement of the robot when colliding|
+|robotTip|GameObject| robotTip | game object that references the last joint of the robot|
+|RobotTipColliding|class| robotTipDetection | class reference to robotTipDetection|
+|SafetyButtonEnabbled|bool| false | if true disables all the functionalities of the robot |
+#### Unity Events
 |:---|---|---|---:|
-|SecondJoint|getEuler()|returns a Vector3 with the local rotation of the joint| NA |
-|SecondJoint|RotatePositiveY_Joint2()|rotates first joint in positive Y axis by adding a float number (motion * speed) to the current x position| W |
-|SecondJoint|RotateNegativeY_Joint2()|rotates first joint in negative Y axis by substracting a float number (motion * speed) to the current x position| S |
-|SecondJoint|setSpeed(float)|sets the speed of the movement of the joint. It is controlled through the ScriptController| NA |
-|SecondJoint|getCurrentJoint2()|returns the local rotation of the Joint | NA |
-|SecondJoint|setCurrent(float)|sets the current value for the joint rotation (it is useful to reset the value when changing from IK to FK)| I |
-
-### Third Joint
-|__Variables__|__Type__|__Default Value__|__Description__|
-|:---|---|---|---:|
-|max|float|40| maximum rotation degree |
-|min|float|-60| minimum rotation degree|
-|current|float|0| current rotation degree|
-|motion|float|0.1f| degree movement value |
-|speed|float|1.0f | speed of rotation|
-
-|__Class__|__Method__|__Description__|__Key__|
-|:---|---|---|---:|
-|ThirdJoint|getEuler()|returns a Vector3 with the local rotation of the joint| NA |
-|ThirdJoint|RotatePositiveX_Joint3()|rotates first joint in positive X axis by adding a float number (motion * speed) to the current x position| Z |
-|ThirdJoint|RotateNegativeX_Joint3()|rotates first joint in negative X axis by substracting a float number (motion * speed) to the current x position| C |
-|ThirdJoint|setSpeed(float)|sets the speed of the movement of the joint. It is controlled through the ScriptController| x|
-|ThirdJoint|getCurrentJoint3()|returns the local rotation of the Joint | NA |
-|ThirdJoint|setCurrent(float)|sets the current value for the joint rotation (it is useful to reset the value when changing from IK to FK)| I |
-
-### Fourth Joint
-|__Variables__|__Type__|__Default Value__|__Description__|
-|:---|---|---|---:|
-|max|float|360| maximum rotation degree |
-|min|float|360| minimum rotation degree|
-|current|float|0| current rotation degree|
-|motion|float|0.1f| degree movement value |
-|speed|float|1.0f | speed of rotation|
-
-|__Class__|__Method__|__Description__|__Key__|
-|:---|---|---|---:|
-|FourthJoint|getEuler()|returns a Vector3 with the local rotation of the joint| NA |
-|FourthJoint|RotatePositiveX_Joint4()|rotates first joint in positive X axis by adding a float number (motion * speed) to the current x position| Q |
-|FourthJoint|RotateNegativeX_Joint4()|rotates first joint in negative X axis by substracting a float number (motion * speed) to the current x position| E |
-|FourthJoint|setSpeed(float)|sets the speed of the movement of the joint. It is controlled through the ScriptController| NA |
-|FourthJoint|getCurrentJoint4()|returns the local rotation of the Joint | NA |
-|FourthJoint|setCurrent(float)|sets the current value for the joint rotation (it is useful to reset the value when changing from IK to FK)| I |
-
-### Fifth Joint
-|__Variables__|__Type__|__Default Value__|__Description__|
-|:---|---|---|---:|
-|max|float|125| maximum rotation degree |
-|min|float|-125| minimum rotation degree|
-|current|float|0| current rotation degree|
-|motion|float|0.1f| degree movement value |
-|speed|float|1.0f | speed of rotation|
-
-|__Class__|__Method__|__Description__|__Key__|
-|:---|---|---|---:|
-|FifthJoint|getEuler()|returns a Vector3 with the local rotation of the joint| NA |
-|FifthJoint|RotatePositiveY_Joint5()|rotates first joint in positive Y axis by adding a float number (motion * speed) to the current x position| UP (arrow_key) |
-|FifthJoint|RotateNegativeY_Joint5()|rotates first joint in negative Y axis by substracting a float number (motion * speed) to the current x position| Down (arrow_ key) |
-|FifthJoint|setSpeed(float)|sets the speed of the movement of the joint. It is controlled through the ScriptController| NA |
-|FifthJoint|getCurrentJoint5()|returns the local rotation of the Joint | NA |
-|FifthJoint|setCurrent(float)|sets the current value for the joint rotation (it is useful to reset the value when changing from IK to FK)| I |
-
-### Sixth Joint
-|__Variables__|__Type__|__Default Value__|__Description__|
-|:---|---|---|---:|
-|max|float|360| maximum rotation degree |
-|min|float|-360| minimum rotation degree|
-|current|float|0| current rotation degree|
-|motion|float|0.1f| degree movement value |
-|speed|float|1.0f | speed of rotation|
-|pickObject|bool|false| picked up object |
-
-|__Class__|__Method__|__Description__|__Key__|
-|:---|---|---|---:|
-|SixthJoint|getEuler()|returns a Vector3 with the local rotation of the joint| NA |
-|SixthJoint|RotatePositiveX_Joint6()|rotates first joint in positive X axis by adding a float number (motion * speed) to the current x position| UP (arrow_key) |
-|SixthJoint|RotateNegativeX_Joint6()|rotates first joint in negative X axis by substracting a float number (motion * speed) to the current x position| Down (arrow_ key) |
-|SixthJoint|setSpeed(float)|sets the speed of the movement of the joint. It is controlled through the ScriptController| NA |
-|SixthJoint|getCurrentJoint6()|returns the local rotation of the Joint | NA |
-
-### Interactable Object
-|__Variables__|__Type__|__Default Value__|__Description__|
-|:---|---|---|---:|
-|rb|Rigidbody| NA | self rigidbody |
-|TriggerI|bool|false| boolean to know if it picked an object|
-|SixthJoint|SixthJoint| NA | reference to sixth joint script|
-|boxcollider|BoxCollider| NA | reference to collider |
-|Joint6RB|Rigidbody| NA | reference to sixth joint rigidbody|
-|grabtooltop|GrabToolTop| NA | reference to grabtooltop script |
-|grabtoolbottom|GrabToolBottom| NA | reference to grabtoolbottom script |
+|IKToggleRobot|UnityEvent| NA | Event for IK Toggle|
+|AddJointsScSpeed|UnityEvent| NA | Event For Increasing Speed|
+|SubsJointsScSpeed|UnityEvent| NA | Event For Decreasing Speed |
 
 |__Class__|__Method__|__Description__|__Key__|
 |:---|---|---|---:|
@@ -149,71 +76,6 @@ While there are some extra functionalities added to this version, some of the ro
 |InteractableObject|OnTriggerExit(Collider)|sets TriggerI = false | NA |
 |InteractableObject|getTriggerStatus()|returns status of the trigger| NA |
 
-### Scripts Controller
-|__Variables__|__Type__|__Default Value__|__Description__|
-|:---|---|---|---:|
-|RecordNumber|int|0| Number of the first line where the reader will get the coordinates from|
-|joint1R|float| NA | float value where the rotation of the joint will be stored|
-|joint2R|float| NA | float value where the rotation of the joint will be stored|
-|joint3R|float| NA | float value where the rotation of the joint will be stored|
-|joint4R|float| NA | float value where the rotation of the joint will be stored|
-|joint5R|float| NA | float value where the rotation of the joint will be stored|
-|joint6R|float| NA | float value where the rotation of the joint will be stored|
-|pickUpObj|bool| NA | boolean that indicates wether an object was picked up or not|
-|StringLength|int| NA | length of the coordinates |
-|speed|float|1.0f | speed of rotation|
-|lastStep|float| NA | stores the time between lastStep (used for shift key)|
-|timeBetweenSteps|float| 0.1f| indicates the time to count before it accepts the same input again (used for shift key)|
-|list1|List<string>| NA| List to store all the coordinates extracted from log.txt|
-|firstJoint|FirstJoint| NA| Gets a reference to the First Joint Script|
-|secondJoint|SecondJoint| NA| Gets a reference to the Second Joint Script|
-|thirdJoint|ThirdJoint| NA| Gets a reference to the Third Joint Script|
-|fourthJoint|FourthJoint| NA| Gets a reference to the Fourth Joint Script|
-|fifthJoint|FifthJoint| NA| Gets a reference to the Fifth Joint Script|
-|sixthJoint|SixthJoint| NA| Gets a reference to the Sixth Joint Script|
-|Joint1Object|GameObject| NA| Gets a reference to the first Joint|
-|Box|GameObject| NA| Gets a reference to the object|
-|Target|GameObject| NA| Gets a reference to the Target for the IK|
-|IKtoggle|bool| true| A boolean used to check and turn off/on IK|
-
-|__Class__|__Method__|__Description__|__Key__|
-|:---|---|---|---:|
-|ScriptsController|createPositionRecord()|records the local rotation of all the joints| NA |
-|ScriptsController|CreateText()|creates the log.txt file if it does not exists| U |
-|ScriptsController|ReadString()|reads log.txt and adds every line to the list1| X|
-|ScriptsController|IncreaseSpeed()|increases the speed of all joints of the robot| SHIFT |
-|ScriptsController|DecreseSpeed()|decreases the speed of all joints of the robot| CTRL |
-|ScriptsController|findIndex(char, string)|finds the index of # from list1 and returns an int[] with the locations of all of them | NA |
-|ScriptsController|loadMovementRecord(int)|loads the coordinates for each joint based on list1 and findIndex| L |
-|ScriptsController|rotateUntilReachPoint()|rotates each one of the joints until reaching the coordinates from list1| M |
-|ScriptsController|toggleIK()|changes the IKtoggle value| I |
-
-### Grab Tool Top
-
-|__Variables__|__Type__|__Default Value__|__Description__|
-|:---|---|---|---:|
-|limitTranslation|float|185|limit translation point |
-|currentTranslation|float|0| current translation point|
-|move|bool|true| being able to move|
-
-|__Class__|__Method__|__Description__|__Key__|
-|:---|---|---|---:|
-|GrabToolTop|localPosition()|returns a Vector3 with the local position of the grab tool at the top| NA |
-|GrabToolTop|setMove()|Moves the tool until reach position| P |
-  
-### Grab Tool Bottom
-
-|__Variables__|__Type__|__Default Value__|__Description__|
-|:---|---|---|---:|
-|limitTranslation|float|185|limit translation point |
-|currentTranslation|float|0| current translation point|
-|move|bool|true| being able to move|
-
-|__Class__|__Method__|__Description__|__Key__|
-|:---|---|---|---:|
-|GrabToolTop|localPosition()|returns a Vector3 with the local position of the grab tool at the top| NA |
-|GrabToolTop|setMove()|Moves the tool until reach position| P |
-  
 # List of errors (x means solved)
 - [x] Picking multiple objects
 - [x] Project not working on 2020.17 unity version
@@ -222,5 +84,7 @@ While there are some extra functionalities added to this version, some of the ro
 - [x] Picked object does not follow robot's movement
   
  # Log
-  Documentation for Robot V2 created (06/10/2022)
+  Documentation for Robot V2 created (06/10/2022)<br />
+  
+[Link to Documenation for Robot V1](https://github.com/Klaimtrev/RobotFanuc)
 
