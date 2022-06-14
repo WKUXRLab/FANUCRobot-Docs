@@ -1,91 +1,116 @@
-# FANUCRobot-Docs
-Project Documentation and User's Guide for the FANUC Robot Project in Unity.
+# NSF-EPSCoR-RA-Robot-Training
+Unity Project for the NSF EPSCoR RA – Robot
+<p align="center">
+  <a href="" rel="noopener">
+ <img width=200px height=200px src="minionrobot.png" alt="Project logo"></a>
+</p>
 
-## Description
-The latest Unity Project for the FANUC 2000iC robot contains 2 main scripts inside the "InteractiveRobot/RobotIKOptimized" folder<br />
-Compared to the previous versions. The logic for the movement of the robot uses an in-house solution for the IK manager and the scripts can be instanciated several times <br />
-The Robot can be move through FK or IK directions but all the joints have a rotation limit. <br />
-While there are some extra functionalities added to this version, some of the robot functionalities have been deprecated from the previous one <br />
+<h3 align="center">Robot Training</h3>
 
-## Sections
-  [Robot Joint](#robot-joint) <br />
-  [IK Manager](#ik-manager) <br />
+<div align="center">
 
-## Classes and Methods
+  [![Status](https://img.shields.io/badge/status-active-success.svg)]() 
+  [![GitHub Issues](https://img.shields.io/github/issues/kylelobo/The-Documentation-Compendium.svg)](https://github.com/WKUXRLab/NSF-EPSCoR-RA-Robot-Training/issues)
+  [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/WKUXRLab/NSF-EPSCoR-RA-Robot-Training/pulls)
+  [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
-### Robot Joint
+</div>
 
-|__Variables__|__Type__|__Default Value__|__Description__|
-|:---|---|---|---:|
-|Axis|Vector3|NA| axis of rotation for the joint |
-|StartOffset|Vector3|NA| degrees of rotation of the joint|
-|MinAngle|float|NA| min angle rotation|
-|MaxAngle|float|NA| max angle rotation |
-|current|float| 0 | current angle of rotation|
-|motion|float| 1.2f | velocity of the motion of the robot|
-|speed|float| 0.35f | speed of the robot|
-|testjointP|bool| false | moves the robot in the positive degree (use only for testing purposes)|
-|testjointN|bool| false | moves the robot in the negative degree (use only for testing purposes)|
-|stopRobotTemporarily|bool| false |limits the movement of the robot when colliding|
-|robotTip|GameObject| robotTip | game object that references the last joint of the robot|
-|RobotTipColliding|class| robotTipDetection | class reference to robotTipDetection|
-|PositiveJointBool|bool| false | moves the robot in the positive degree (only accessible through buttons)|
-|NegativeJointBool|bool| false | moves the robot in the negative degree (only accessible through buttons)|
+---
+
+<p align="center"> Few lines describing your project.
+    <br> 
+</p>
+
+## 📝 Table of Contents
+- [About](#about)
+- [Getting Started](#getting_started)
+- [Deployment](#deployment)
+- [Usage](#usage)
+- [Built Using](#built_using)
+- [Authors](#authors)
+- [Acknowledgments](#acknowledgement)
+
+## 🧐 About <a name = "about"></a>
+Unity Project that simulates the functionalities of the FANUC 2000iC robot contains 2 main scripts inside the "InteractiveRobot/RobotIKOptimized" folder
+Compared to the previous versions. The logic for the movement of the robot uses an in-house solution for the IK manager and the scripts can be instanciated several times.
+The Robot can be move through FK or IK directions but all the joints have a rotation limit.
+## 🏁 Getting Started <a name = "getting_started"></a>
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
+
+### Prerequisites
+
+- PC capable of running Unity
+- Oculus VR Headset with hand tracking support
+- Link cable or usb-c cable
+- Unity 2021.1.14f with android extension
+
+### Installing
+#### A step by step series of examples that tell you how to get a development env running:
+
+1. Download the repository using the following url
+
+```
+https://github.com/WKUXRLab/NSF-EPSCoR-RA-Robot-Training.git
+```
+Alternatively you can download the entire repository as a zip file
+
+2. Open Unity Hub and add a the downloaded project.
+
+A new project will show up on the list and you will be able to open it.
+
+3. Once the compilation is done, go to project settings and enable XR deployment for android
+
+End with an example of getting some data out of the system or using it for a little demo.
+
+## 🔧 Known Issues <a name = "tests"></a>
+Explain how to run the automated tests for this system.
+
+### Break down into end to end tests
+Explain what these tests test and why
+
+```
+Give an example
+```
+
+### And coding style tests
+Explain what these tests test and why
+
+```
+Give an example
+```
+
+## 🎈 Usage <a name="usage"></a>
+This is an alpha version of the project to train engineering student on how to use an industrial robot
+
+## 🚀 Deployment <a name = "deployment"></a>
+### To run the project on the standalone headset do the following:
+
+1. Set the Build Settings of the project to android
+2. Make sure that you allow your headset to connect to your pc.
+3. Click on Build and Deploy
+4. Wait until the process is complete and try to not move the cable
+5. Done !
 
 
+Alternatively, you can select the build option and upload the APK to your headset using SideQuest
 
-|__Class__|__Method__|__Description__|__Key__|
-|:---|---|---|---:|
-|RobotJoint|getEuler()|returns a Vector3 with the local rotation of the joint| NA |
-|FirstJoint|RotatePositiveX_Joint1()|rotates first joint in positive x axis by adding a float number (motion * speed) to the current x position| A |
-|FirstJoint|RotateNegativeX_Joint1()|rotates first joint in negative x axis by substracting a float number (motion * speed) to the current x position| D |
-|FirstJoint|setSpeed(float)|sets the speed of the movement of the joint. It is controlled through the ScriptController| NA |
-|FirstJoint|getCurrentJoint1()|returns the local rotation of the Joint | NA |
-|FirstJoint|setCurrent(float)|sets the current value for the joint rotation (it is useful to reset the value when changing from IK to FK)| I |
+## ⛏️ Built Using <a name = "built_using"></a>
+- [Unity](https://unity.com/) - Game Engine
+- [Oculus SDK](https://developer.oculus.com/) - Oculus Development Kit
+- [MRTK](https://github.com/microsoft/MixedRealityToolkit-Unity) - Microsoft Developer Tool
 
-the local rotation of the Joint | NA |
+## ✍️ Authors <a name = "authors"></a>
+- [@Klaimtrev](https://github.com/Klaimtrev) - Diego Minaya - Robot System and 3D Modelling
+- [@sterry733](https://github.com/sterry733) - Sarah Terry - Script and Level Design
+- [@QuisDiMoo](https://github.com/QuisDiMoo) - Chris DiMeo - VR adaptation and MR testing
+- [@madison-whittle](https://github.com/madison-whittle) - Madison Whittle - Documentation and Social Media Manager
+- [@Kitriguin](https://github.com/Kitriguin) - Kristina Riney - User Interface, MRTK and Oculus SDK Set Up
+- [@EmilyYeager14](https://github.com/EmilyYeager14) - Emily Yeager - 3D scanning
+- Isabel Ocegueda - Coding adaptation for Robot V1
+- Zachary Mers - 3D printing  
 
-### IK Manager
-|__Variables__|__Type__|__Default Value__|__Description__|
-|:---|---|---|---:|
-|TargetTransform|Transform| NA | reference to the transform values of the IK target |
-|Joints|RobotJoint[]|NA| list of joints (gameobjects using the robot joint sript) |
-|Angles|float[]| NA | list of angles of all the joints of the robot|
-|SamplingDistance|float| 5f | distance sample for the grdient  |
-|LearningRate|float| 100f | rate of tries that the system will use to get to the location |
-|DistanceThreshold|float|  0.0001f | Distance at which the IK system will stop |
-|IKToggle|bool| NA | switches between IK and FK systems |
-|JointsSpeed|float| 0.35f | speed of the joints |
-|SetIKSwitchVar|bool| false | sllows the Robot to switch to IK  |
-|SetSpeedUPVar|bool| false | increases the speed of all the joints in FK |
-|SetSpeedDOWNVar|bool|  false | decreases the speed of all the joints in FK |
-|stopRobotTemporarily|bool| false |limits the movement of the robot when colliding|
-|robotTip|GameObject| robotTip | game object that references the last joint of the robot|
-|RobotTipColliding|class| robotTipDetection | class reference to robotTipDetection|
-|SafetyButtonEnabbled|bool| false | if true disables all the functionalities of the robot |
-#### Unity Events
-|__Variables__|__Type__|__Default Value__|__Description__|
-|:---|---|---|---:|
-|IKToggleRobot|UnityEvent| NA | Event for IK Toggle|
-|AddJointsScSpeed|UnityEvent| NA | Event For Increasing Speed|
-|SubsJointsScSpeed|UnityEvent| NA | Event For Decreasing Speed |
 
-|__Class__|__Method__|__Description__|__Key__|
-|:---|---|---|---:|
-|InteractableObject|OnCollisionEnter(Collision)|checks if the object is colliding by both sides| NA |
-|InteractableObject|OnCollisionExit(Collision)|checks if the object is still colliding by both sides | NA |
-|InteractableObject|OnTriggerExit(Collider)|sets TriggerI = false | NA |
-|InteractableObject|getTriggerStatus()|returns status of the trigger| NA |
-
-# List of errors (x means solved)
-- [x] Picking multiple objects
-- [x] Project not working on 2020.17 unity version
-- [x] Not able to change speed of IK Target
-- [ ] Storing "picking up" method inside log.txt
-- [x] Picked object does not follow robot's movement
-  
- # Log
-  Documentation for Robot V2 created (06/10/2022)<br />
-  
-[Link to Documenation for Robot V1](https://github.com/Klaimtrev/RobotFanuc)
-
+## 🎉 Acknowledgements <a name = "acknowledgement"></a>
+- References
+Our IK implementation for the robot was made following the guide from Alan Zucconi (https://www.alanzucconi.com/2017/04/10/robotic-arms/)
