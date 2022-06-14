@@ -64,21 +64,12 @@ A new project will show up on the list and you will be able to open it.
 End with an example of getting some data out of the system or using it for a little demo.
 
 ## 🔧 Known Issues <a name = "tests"></a>
-Explain how to run the automated tests for this system.
+### These are some of the issues you may encounter and a way to fix them:
 
-### Break down into end to end tests
-Explain what these tests test and why
+- Not able to use hand tracking - _Solution_ : Enable hand tracking through Oculus settings
+- Missing Reference to Oculus SDK or MRTK - _Solution_ : Download the project again and make sure to not update any package
 
-```
-Give an example
-```
-
-### And coding style tests
-Explain what these tests test and why
-
-```
-Give an example
-```
+If you experience any other issue with the project besides these, please add them to the issues tab and we will review it
 
 ## 🎈 Usage <a name="usage"></a>
 This is an alpha version of the project to train engineering student on how to use an industrial robot
