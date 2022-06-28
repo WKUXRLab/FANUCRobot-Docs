@@ -92,12 +92,12 @@ Alternatively, you can select the build option and upload the APK to your headse
 - [MRTK](https://github.com/microsoft/MixedRealityToolkit-Unity) - Microsoft Developer Tool
 
 ## ✍️ Authors <a name = "authors"></a>
-- [@Klaimtrev](https://github.com/Klaimtrev) - Diego Minaya - Robot System and 3D Modelling
-- [@sterry733](https://github.com/sterry733) - Sarah Terry - Script and Level Design
-- [@QuisDiMoo](https://github.com/QuisDiMoo) - Chris DiMeo - VR adaptation and MR testing
-- [@madison-whittle](https://github.com/madison-whittle) - Madison Whittle - Documentation and Social Media Manager
-- [@Kitriguin](https://github.com/Kitriguin) - Kristina Riney - User Interface, MRTK and Oculus SDK Set Up
-- [@EmilyYeager14](https://github.com/EmilyYeager14) - Emily Yeager - 3D scanning
+- Diego Minaya - [@Klaimtrev](https://github.com/Klaimtrev) - Robot System and 3D Modelling
+- Sarah Terry - [@sterry733](https://github.com/sterry733) - Script and Level Design
+- Chris DiMeo - [@QuisDiMoo](https://github.com/QuisDiMoo) - VR adaptation and MR testing
+- Madison Whittle - [@madison-whittle](https://github.com/madison-whittle) - Documentation and Social Media Manager
+- Kristina Riney - [@Kitriguin](https://github.com/Kitriguin) - User Interface, MRTK and Oculus SDK Set Up
+- Emily Yeager - [@EmilyYeager14](https://github.com/EmilyYeager14) - 3D scanning
 - Isabel Ocegueda - Coding adaptation for Robot V1
 - Zachary Mers - 3D printing  
 
