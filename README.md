@@ -95,7 +95,7 @@ Alternatively, you can select the build option and upload the APK to your headse
 - Diego Minaya - [@Klaimtrev](https://github.com/Klaimtrev) - Robot System and 3D Modelling
 - Sarah Terry - [@sterry733](https://github.com/sterry733) - Script and Level Design
 - Chris DiMeo - [@QuisDiMoo](https://github.com/QuisDiMoo) - VR adaptation and MR testing
-- Madison Whittle - [@madison-whittle](https://github.com/madison-whittle) - Documentation and Social Media Manager
+- Madison Whittle - [@madison-whittle](https://github.com/madison-whittle) - User Experience and Documentation
 - Kristina Riney - [@Kitriguin](https://github.com/Kitriguin) - User Interface, MRTK and Oculus SDK Set Up
 - Emily Yeager - [@EmilyYeager14](https://github.com/EmilyYeager14) - 3D scanning
 - Isabel Ocegueda - Coding adaptation for Robot V1
